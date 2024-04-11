@@ -1,5 +1,15 @@
-import type { AnalyticsEvent } from "apps/commerce/types.ts";
-import { scriptAsDataURI } from "apps/utils/dataURI.ts";
+import type { AnalyticsEvent } from "https://cdn.jsdelivr.net/gh/deco-cx/apps@0.35.35/commerce/types.ts";
+import { scriptAsDataURI } from "https://cdn.jsdelivr.net/gh/deco-cx/apps@0.35.35/utils/dataURI.ts";
+
+declare global {
+  interface Window {
+    DECO: {
+      events: {
+        dispatch: (event: AnalyticsEvent) => void;
+      };
+    };
+  }
+}
 
 /**
  * This function is usefull for sending events on click. Works with both Server and Islands components
